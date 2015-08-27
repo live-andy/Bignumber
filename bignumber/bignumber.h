@@ -35,7 +35,7 @@ public:		//Operators
 private:
 	short NumberValue[MAXSIZE];	//由小到大紀錄數值
 	bool Negative;
-	char *NowPosition;
+	//char *NowPosition;
 	int MaxIndex;
 };
 

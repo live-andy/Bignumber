@@ -8,12 +8,10 @@ bignumber::bignumber()
 	}
 	MaxIndex = 0;
 	Negative = FALSE;
-	NowPosition = NULL;
 }
 
 bignumber::bignumber(char *InputNumberString)
 {
-	NowPosition = NULL;
 	for (int i = 0; i < MAXSIZE; i++)
 	{
 		NumberValue[i] = BIGNUMBER_ZERO;
@@ -88,7 +86,6 @@ void bignumber::Clear(void)
 	}
 	MaxIndex = 0;
 	Negative = FALSE;
-	NowPosition = NULL;
 }
 
 int bignumber::GetLength(void)
@@ -152,7 +149,6 @@ void bignumber::Show(void)
 
 void bignumber::Set(char *InputNumberString)
 {
-	NowPosition = NULL;
 	for (int i = 0; i < MAXSIZE; i++)
 	{
 		NumberValue[i] = BIGNUMBER_ZERO;
@@ -211,7 +207,6 @@ bignumber& bignumber::operator=(const bignumber& b)
 {
 	for (int i = 0; i < MAXSIZE; i++) NumberValue[i] = b.NumberValue[i];
 	Negative = b.Negative;
-	NowPosition = b.NowPosition;
 	MaxIndex = b.MaxIndex;
 	return *this;
 }
