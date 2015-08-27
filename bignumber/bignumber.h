@@ -33,7 +33,7 @@ public:		//Operators
 	short& operator [] (int i) { return NumberValue[MaxIndex - i]; }
 	const short& operator [] (int i) const { return NumberValue[MaxIndex - i]; }
 private:
-	short NumberValue[MAXSIZE];	//由小到大紀錄數值
+	short NumberValue[MAXSIZE];	//Record numbers from low level to high level
 	bool Negative;
 	//char *NowPosition;
 	int MaxIndex;
@@ -42,8 +42,8 @@ private:
 bignumber operator+(bignumber& a, bignumber& b);
 bignumber operator-(bignumber& a, bignumber& b);
 bignumber operator*(bignumber& a, bignumber& b);
-bignumber operator/(bignumber& a, bignumber& b);
-bignumber operator%(bignumber& a, bignumber& b);
+bignumber operator/(bignumber& a, bignumber& b);	//unfinished
+bignumber operator%(bignumber& a, bignumber& b);	//unfinished
 bool operator<(bignumber& a, bignumber& b);
 bool operator>(bignumber& a, bignumber& b);
 bool operator==(bignumber& a, bignumber& b);
