@@ -414,22 +414,22 @@ bignumber operator*(bignumber& a, bignumber& b)
 	{
 		for (int j = 0; j < Length_b; j++)
 		{
-			Result_Value[i + j] = a_value[i] * b_value[j];
+			Result_Value[i + j] += (a_value[i] * b_value[j]);
 		}
 	}
 	short Carry = BIGNUMBER_ZERO;
 	short Leaver = BIGNUMBER_ZERO;
 	for (int i = 0; i < MAXSIZE; i++)
 	{
-		Result_Value[i] += Carry;
 		if (Result_Value[i] > BIGNUMBER_MAX)
 		{
-			Leaver = Result_Value[i] % (BIGNUMBER_MAX + 1);
-			Carry = Result_Value[i] / (BIGNUMBER_MAX + 1);
-			Result_Value[i] = Leaver;
+			Result_Value[i + 1] += (Result_Value[i] / (BIGNUMBER_MAX + 1));
+			Result_Value[i] = Result_Value[i] % (BIGNUMBER_MAX + 1);
 		}
 	}
-	if (a.IsNegative() && b.IsNegative()) NegativeOption = FALSE;
+	//for (int i = 0; i < MAXSIZE; i++) std::cout << Result_Value[i];
+	if (!(a.IsNegative() ^ b.IsNegative())) NegativeOption = FALSE;
+	std::cout << std::endl << std::endl << NegativeOption << std::endl;
 	bignumber Result(Result_Value,NegativeOption);
 	return Result;
 }
