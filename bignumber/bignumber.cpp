@@ -67,7 +67,6 @@ bignumber::bignumber(short *InputNumberValue, bool NegativeOptition)
 	}
 }
 
-
 void bignumber::Absolute(void)
 {
 	Negative = FALSE;
@@ -424,7 +423,7 @@ bignumber operator*(bignumber& a, bignumber& b)
 	}
 	//for (int i = 0; i < MAXSIZE; i++) std::cout << Result_Value[i];
 	if (!(a.IsNegative() ^ b.IsNegative())) NegativeOption = FALSE;
-	std::cout << std::endl << std::endl << NegativeOption << std::endl;
+	//std::cout << std::endl << std::endl << NegativeOption << std::endl;
 	bignumber Result(Result_Value,NegativeOption);
 	return Result;
 }
