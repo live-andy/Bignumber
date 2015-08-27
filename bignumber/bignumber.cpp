@@ -403,14 +403,35 @@ bignumber operator-(bignumber& a,bignumber& b)
 
 bignumber operator*(bignumber& a, bignumber& b)
 {
-	bool NegativeOption = FALSE;
+	bool NegativeOption = TRUE;
 	short *Result_Value = new short[MAXSIZE];
 	for (int i = 0; i < MAXSIZE; i++) Result_Value[i] = BIGNUMBER_ZERO;
 	int Length_a = a.GetLength();
 	int Length_b = b.GetLength();
 	short *a_value = a.GetNumberValue();
 	short *b_value = b.GetNumberValue();
-
+	for (int i = 0; i < Length_a; i++)
+	{
+		for (int j = 0; j < Length_b; j++)
+		{
+			Result_Value[i + j] = a_value[i] * b_value[j];
+		}
+	}
+	short Carry = BIGNUMBER_ZERO;
+	short Leaver = BIGNUMBER_ZERO;
+	for (int i = 0; i < MAXSIZE; i++)
+	{
+		Result_Value[i] += Carry;
+		if (Result_Value[i] > BIGNUMBER_MAX)
+		{
+			Leaver = Result_Value[i] % (BIGNUMBER_MAX + 1);
+			Carry = Result_Value[i] / (BIGNUMBER_MAX + 1);
+			Result_Value[i] = Leaver;
+		}
+	}
+	if (a.IsNegative() && b.IsNegative()) NegativeOption = FALSE;
+	bignumber Result(Result_Value,NegativeOption);
+	return Result;
 }
 
 bignumber operator/(bignumber& a, bignumber& b)
