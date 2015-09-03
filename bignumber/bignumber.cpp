@@ -431,6 +431,20 @@ bignumber operator*(bignumber& a, bignumber& b)
 bignumber operator/(bignumber& a, bignumber& b)
 {
 	bignumber Result;
+	return Result;					//uncompleted protect
+	short *a_number = a.GetNumberValue();
+	short *b_number = b.GetNumberValue();
+	if (b == Result ||( a < b && !a.IsNegative() && !b.IsNegative())) return Result;
+	if (a.GetLength() == b.GetLength() && a.IsNegative() == b.IsNegative() && b > a) return b;
+	if (a == b)
+	{
+		bignumber One("1");
+		delete a_number;
+		delete b_number;
+		return One;
+	}
+	short *Result_number = new short[MAXSIZE];
+
 	return Result;
 }
 

@@ -2,7 +2,7 @@
 #ifndef BIGNUMBER_H
 #define BIGNUMBER_H
 #define BIGNUMBER_ZERO 0
-#define BIGNUMBER_MAX 15
+#define BIGNUMBER_MAX 9
 #define TRUE 1
 #define FALSE 0
 #define MAXSIZE 2048
